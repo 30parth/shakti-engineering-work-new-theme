@@ -1,5 +1,5 @@
 <div>
-    <x-common.component-card title="User List">
+    <x-common.component-card title="Account List">
         <x-common.table-header />
         <x-ui.table.table>
             <x-ui.table.thead>

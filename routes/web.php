@@ -19,7 +19,6 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
 
-    Route::livewire('/user', 'user.user-list');
 
     Route::get('/signout', function () {
         Auth::logout();
@@ -27,6 +26,12 @@ Route::middleware('auth')->group(function () {
     })->name('signout');
 
     Route::livewire('/', 'dashboard.index')->name('dashboard');
+
+    Route::prefix('account')->name('account.')->group(function () {
+        Route::livewire('/', 'account.account-list')->name('list');
+        Route::livewire('/add', 'account.account-form')->name('add');
+        Route::livewire('/edit/{id}', 'account.account-form')->name('edit');
+    });
 
     // Route::get('/', function () {
     //     return view('pages.dashboard.ecommerce', ['title' => 'E-commerce Dashboard']);
