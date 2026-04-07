@@ -15,7 +15,10 @@ class MenuHelper
             [
                 'icon' => 'user',
                 'name' => 'Account',
-                'path' => '/account'
+                'subItems' => [
+                    ['name' => 'Vendor', 'path' => '/account/vendor', 'pro' => false],
+                    ['name' => 'Customer', 'path' => '/account/customer', 'pro' => false],
+                ]
             ],
             // [
             //     'icon' => 'calendar',

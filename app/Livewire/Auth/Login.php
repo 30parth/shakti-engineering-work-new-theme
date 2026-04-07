@@ -23,7 +23,7 @@ class Login extends Component
             return redirect()->route('dashboard');
         }
 
-        $this->addError('email', 'Invalid credentials!');
+        $this->addError('login', 'Invalid credentials!');
     }
 
     #[Layout('layouts.fullscreen-layout')]

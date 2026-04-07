@@ -19,16 +19,5 @@
                 <x-ui.button type="submit" wire:loading.attr="disabled">Save</x-ui.button>
             </div>
         </form>
-
-
-        <div class="grid grid-cols-3 gap-4">
-            <div class="">01</div>
-            <div class="">02</div>
-            <div class="">03</div>
-            <div class="col-span-2 ">04</div>
-            <div class="">05</div>
-            <div class="">06</div>
-            <div class="col-span-2 ">07</div>
-        </div>
     </x-common.component-card>
 </div>

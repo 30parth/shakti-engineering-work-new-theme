@@ -13,6 +13,11 @@
                                 Enter your email and password to sign in!
                             </p>
                         </div>
+                        @error('login')
+                            <div class="mb-3">
+                                <x-ui.alert variant="error" :message="$message" />
+                            </div>
+                        @enderror
                         <div>
                             <form wire:submit="login" id="login">
                                 <div class="space-y-5">
