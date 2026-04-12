@@ -8,8 +8,8 @@ use Livewire\Component;
 
 class Login extends Component
 {
-
     public $email;
+
     public $password;
 
     public function login()
@@ -20,7 +20,7 @@ class Login extends Component
         ]);
 
         if (Auth::attempt($this->only(['email', 'password']))) {
-            return redirect()->route('dashboard');
+            return $this->redirectRoute('dashboard', navigate: true);
         }
 
         $this->addError('login', 'Invalid credentials!');
