@@ -26,7 +26,7 @@ php artisan route:cache
 php artisan view:cache
 php artisan event:cache
 
-php artisan db:seed
+#php artisan db:seed
 
 echo "Starting Apache..."
 exec "$@"
