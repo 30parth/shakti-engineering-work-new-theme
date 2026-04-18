@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('accounts', function (Blueprint $table) {
+        Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->string('account_type');
-            $table->string('company_name');
-            $table->string('name');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('gst_no')->nullable();
-            $table->string('gst_treatment_type')->nullable();
+            $table->foreignId('account_id')->constrained('accounts')->cascadeOnDelete();
+            $table->text('address');
+            $table->string('city');
+            $table->string('state');
+            $table->integer('pin_code');
+            $table->string('country')->default('india');
             $table->foreignId('created_by')->constrained('users')->cascadeOnDelete();
             $table->foreignId('updated_by')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('accounts');
+        Schema::dropIfExists('addresses');
     }
 };

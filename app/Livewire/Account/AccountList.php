@@ -2,21 +2,43 @@
 
 namespace App\Livewire\Account;
 
+use App\Services\AccountService;
 use Livewire\Component;
-use App\Models\Account;
+use Livewire\WithoutUrlPagination;
+use Livewire\WithPagination;
 
 class AccountList extends Component
 {
-    public $records;
+    use WithoutUrlPagination, WithPagination;
+
+    public $search = '';
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
 
     public function addRecord()
     {
-        return $this->redirectRoute('account.add');
+        return $this->redirectRoute('account.add', navigate: true);
     }
 
-    public function render()
+    public function editRecord($id)
     {
-        $this->records = Account::all();
-        return view('livewire.account.account-list');
+        return $this->redirectRoute('account.edit', $id, navigate: true);
+    }
+
+    public function deleteRecord($id)
+    {
+        app(AccountService::class)->delete($id);
+
+        return $this->redirectRoute('account.list');
+    }
+
+    public function render(AccountService $service)
+    {
+        return view('livewire.account.account-list', [
+            'records' => $service->getAccount($this->search),
+        ]);
     }
 }

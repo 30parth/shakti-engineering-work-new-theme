@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 // dashboard pages
 
@@ -19,9 +18,9 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
 
-
     Route::get('/signout', function () {
         Auth::logout();
+
         return redirect()->route('login');
     })->name('signout');
 
@@ -76,7 +75,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/bar-chart', function () {
         return view('pages.chart.bar-chart', ['title' => 'Bar Chart']);
     })->name('bar-chart');
-
 
     // authentication pages
     // Route::get('/signin', function () {

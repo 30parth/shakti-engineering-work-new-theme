@@ -58,19 +58,27 @@
     @mouseenter="if (!$store.sidebar.isExpanded) $store.sidebar.setHovered(true)"
     @mouseleave="$store.sidebar.setHovered(false)">
     <!-- Logo Section -->
-    <div class="pt-8 pb-7 flex"
+    <div class="pt-8 pb-7 flex items-center transition-all duration-300"
         :class="(!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen) ?
         'xl:justify-center' :
-        'justify-start'">
-        <a href="/">
-            <img x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen"
-                class="dark:hidden" src="/images/logo/logo.svg" alt="Logo" width="150" height="40" />
-            <img x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen"
-                class="hidden dark:block" src="/images/logo/logo-dark.svg" alt="Logo" width="150"
-                height="40" />
-            <img x-show="!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen"
-                src="/images/logo/logo-icon.svg" alt="Logo" width="32" height="32" />
+        'justify-start px-4'">
+        <a href="/" class="group block relative ">
+            <!-- Text Logo (Visible when Expanded or Hovered) -->
+            <div x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen"
+                x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100" class="w-[200px] flex items-center justify-center">
+                <span class="text-xl font-black italic text-gray-800 dark:text-white uppercase tracking-tighter ">
+                    Shakti Engineering Works
+                </span>
+            </div>
 
+            <!-- Logo Image (Visible when Collapsed) -->
+            <div x-show="!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen"
+                x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100" class="size-10 flex items-center justify-center">
+                <img src="{{ asset('images/logo/logo-sew.png') }}" alt="SEW Logo"
+                    class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300" />
+            </div>
         </a>
     </div>
 
