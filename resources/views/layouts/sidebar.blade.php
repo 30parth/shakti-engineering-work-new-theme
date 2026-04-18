@@ -46,7 +46,11 @@
             return this.openSubmenus[key] || false;
         },
         isActive(path) {
-            return window.location.pathname === path || '{{ $currentPath }}' === path.replace(/^\//, '');
+            const currentPath = window.location.pathname;
+            if (path === '/') {
+                return currentPath === '/';
+            }
+            return currentPath === path || currentPath.startsWith(path + '/');
         }
     }"
     :class="{
@@ -67,7 +71,7 @@
             <div x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen"
                 x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95"
                 x-transition:enter-end="opacity-100 scale-100" class="w-[200px] flex items-center justify-center">
-                <span class="text-xl font-black italic text-gray-800 dark:text-white uppercase tracking-tighter ">
+                <span class="text-sm font-black text-gray-800 dark:text-white uppercase tracking-tighter ">
                     Shakti Engineering Works
                 </span>
             </div>
@@ -105,6 +109,7 @@
                                         fill="currentColor" />
                                 </svg>
                             </template>
+
                         </h2>
 
                         <!-- Menu Items -->
@@ -240,7 +245,3 @@
 
     </div>
 </aside>
-
-<!-- Mobile Overlay -->
-<div x-show="$store.sidebar.isMobileOpen" @click="$store.sidebar.setMobileOpen(false)"
-    class="fixed z-50 h-screen w-full bg-gray-900/50"></div>
