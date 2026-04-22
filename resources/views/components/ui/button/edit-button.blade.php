@@ -1,6 +1,6 @@
 @props([
     'id' => '',
 ])
-<div class="" wire:click="editRecord({{ $id }})">
+<div class="cursor-pointer" wire:click="editRecord({{ $id }})">
     <x-ui.icon.pencil />
 </div>

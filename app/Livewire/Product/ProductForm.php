@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Livewire\Account;
+namespace App\Livewire\Product;
 
-use App\Livewire\Forms\Account\AccountForm as Form;
-use App\Services\AccountService;
+use App\Livewire\Forms\Product\ProductForm as Form;
+use App\Services\ProductService;
 use Livewire\Component;
 
-class AccountForm extends Component
+class ProductForm extends Component
 {
     public Form $form;
 
     public $id = 0;
 
-    private AccountService $service;
+    private ProductService $service;
 
-    public function boot(AccountService $service)
+    public function boot(ProductService $service)
     {
         $this->service = $service;
     }
@@ -37,16 +37,16 @@ class AccountForm extends Component
             $this->service->insert($this->form->all());
         }
 
-        $this->redirectRoute('account.list', navigate: true);
+        $this->redirectRoute('product.list', navigate: true);
     }
 
     public function back()
     {
-        $this->redirectRoute('account.list', navigate: true);
+        $this->redirectRoute('product.list', navigate: true);
     }
 
     public function render()
     {
-        return view('livewire.account.account-form');
+        return view('livewire.product.product-form');
     }
 }

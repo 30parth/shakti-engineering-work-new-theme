@@ -32,6 +32,13 @@ Route::middleware('auth')->group(function () {
         Route::livewire('/edit/{id}', 'account.account-form')->name('edit');
     });
 
+    Route::prefix('product')->name('product.')->group(function () {
+        Route::livewire('/', 'product.product-list')->name('list');
+        Route::livewire('/add', 'product.product-form')->name('add');
+        Route::livewire('/edit/{id}', 'product.product-form')->name('edit');
+    });
+
+
     // Route::get('/', function () {
     //     return view('pages.dashboard.ecommerce', ['title' => 'E-commerce Dashboard']);
     // })->name('dashboard');

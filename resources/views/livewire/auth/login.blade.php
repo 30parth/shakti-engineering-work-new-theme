@@ -26,8 +26,7 @@
                                         placeholder="*******" />
 
                                     <!-- Button -->
-                                    <x-ui.button className="w-full" type="submit" wire:loading.attr="disabled">Sign
-                                        In</x-ui.button>
+                                    <x-ui.button className="w-full" type="submit">Sign In</x-ui.button>
                                 </div>
                             </form>
                         </div>

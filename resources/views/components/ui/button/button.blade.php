@@ -33,7 +33,8 @@
     $classes = trim("{$base} {$sizeClass} {$variantClass} {$className} {$disabledClass}");
 @endphp
 
-<button {{ $attributes->merge(['class' => $classes, 'type' => $attributes->get('type', 'button')]) }}
+<button wire:loading.attr="disabled"
+    {{ $attributes->merge(['class' => $classes, 'type' => $attributes->get('type', 'button')]) }}
     @if ($disabled) disabled @endif>
     {{-- start icon: priority — named slot 'startIcon' first, then startIcon prop if it's a HtmlString --}}
     @if (isset($__env) && $slot->isEmpty() === false)

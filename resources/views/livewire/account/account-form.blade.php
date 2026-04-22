@@ -1,7 +1,6 @@
 <div>
     <x-common.component-card title="{{ $id ? 'Edit Account' : 'Add Account' }}">
-        <form wire:submit="save">
-
+        <form wire:submit="save" id="account-form">
             <div class="grid grid-cols-1 gap-x-6 gap-y-6 md:grid-cols-2">
                 <x-ui.form.input label="Company Name" id="form.company_name" placeholder="Enter Company Name" />
                 <x-ui.form.input label="Name" id="form.name" placeholder="Enter Name" />
@@ -16,9 +15,7 @@
                 <x-ui.form.input label="Pin Code" id="form.pin_code" placeholder="Enter Pin Code" />
                 <x-ui.form.input label="Country" id="form.country" placeholder="Enter Country" />
             </div>
-            <div class="mt-8 flex justify-end gap-3">
-                <x-ui.button type="submit" wire:loading.attr="disabled">Save</x-ui.button>
-            </div>
+            <x-common.form-footer formId="account-form" navigateBackRoute="account.list" />
         </form>
     </x-common.component-card>
 </div>
