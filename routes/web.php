@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
         Route::livewire('/', 'product.product-list')->name('list');
         Route::livewire('/add', 'product.product-form')->name('add');
         Route::livewire('/edit/{id}', 'product.product-form')->name('edit');
+        Route::livewire('/import', 'product.product-import')->name('import');
     });
 
 

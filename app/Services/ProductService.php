@@ -14,20 +14,20 @@ class ProductService
             $query->where('product_name', 'like', "%{$search}%");
         }
 
-        return $query->paginate(config('app.pagination_limit', 10));
+        return $query->orderBy('product_name')->paginate(config('app.pagination_limit', 10));
     }
 
     public function insert($data)
     {
         Product::create([
             'product_name' => $data['product_name'] ?? null,
-            'description'  => $data['description'] ?? null,
-            'hsn'          => $data['hsn'] ?? null,
-            'unit'         => $data['unit'] ?? null,
-            'sales_price'  => $data['sales_price'] ?? 0,
-            'tax_type'     => $data['tax_type'] ?? 'exclusive',
-            'gst'          => $data['gst'] ?? 0,
-            'cess'         => $data['cess'] ?? 0,
+            'description' => $data['description'] ?? null,
+            'hsn' => $data['hsn'] ?? null,
+            'unit' => $data['unit'] ?? null,
+            'sales_price' => $data['sales_price'] ?? 0,
+            'tax_type' => $data['tax_type'] ?? 'exclusive',
+            'gst' => $data['gst'] ?? 0,
+            'cess' => $data['cess'] ?? 0,
         ]);
     }
 
@@ -37,13 +37,13 @@ class ProductService
 
         $product->update([
             'product_name' => $data['product_name'] ?? $product->product_name,
-            'description'  => $data['description'] ?? $product->description,
-            'hsn'          => $data['hsn'] ?? $product->hsn,
-            'unit'         => $data['unit'] ?? $product->unit,
-            'sales_price'  => $data['sales_price'] ?? $product->sales_price,
-            'tax_type'     => $data['tax_type'] ?? $product->tax_type,
-            'gst'          => $data['gst'] ?? $product->gst,
-            'cess'         => $data['cess'] ?? $product->cess,
+            'description' => $data['description'] ?? $product->description,
+            'hsn' => $data['hsn'] ?? $product->hsn,
+            'unit' => $data['unit'] ?? $product->unit,
+            'sales_price' => $data['sales_price'] ?? $product->sales_price,
+            'tax_type' => $data['tax_type'] ?? $product->tax_type,
+            'gst' => $data['gst'] ?? $product->gst,
+            'cess' => $data['cess'] ?? $product->cess,
         ]);
     }
 

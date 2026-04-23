@@ -6,6 +6,8 @@ use App\Services\ProductService;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ProductsExport;
 
 class ProductList extends Component
 {
@@ -16,6 +18,16 @@ class ProductList extends Component
     public function updatingSearch()
     {
         $this->resetPage();
+    }
+
+    public function export()
+    {
+        return Excel::download(new ProductsExport, 'products.xlsx');
+    }
+
+    public function import()
+    {
+        return $this->redirectRoute('product.import', navigate: true);
     }
 
     public function addRecord()
